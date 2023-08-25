@@ -1,7 +1,7 @@
 
 
 const controle = document.querySelectorAll("[data-controle]");
-const estatisticas = document.querySelector('[data-estatistica]');
+const estatisticas = document.querySelector("[data-estatistica]");
 
 const pecas = {
     "bracos": {
@@ -43,7 +43,7 @@ const pecas = {
 controle.forEach( (elemento) => {
     elemento.addEventListener("click", (evento) => {
         
-        manipulaDados(evento.target.dataset.controle, evento.target.parentNode)
+        manipulaDados(evento.target.dataset.controle, evento.target.parentNode);
         atualizaEstatistica(evento.target.dataset.peca)
         
     })
@@ -61,7 +61,10 @@ function manipulaDados (operacao, controle) {
 }
 
 function atualizaEstatistica(peca) {
-    console.log(peca)
+    
+    estatisticas.forEach( (elemento) => {
+        elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.estatisticas]
+    })
 }
 
 
